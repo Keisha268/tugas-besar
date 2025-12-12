@@ -38,7 +38,7 @@
               <h5>Data Prasarana</h5>
 
               <button type="button" class="btn bg-gradient-success mb-3" data-bs-toggle="modal" data-bs-target="#modalCreate">
-                Tambah Data
+                <i class="fas fa-plus"></i> Tambah Data
               </button>
             </div>
 
@@ -54,7 +54,7 @@
                       <th class="text-center text-secondary text-xxs font-weight-bolder">Status Kepemilikan</th>
                       <th class="text-center text-secondary text-xxs font-weight-bolder">Status Lisensi</th>
                       <th class="text-center text-secondary text-xxs font-weight-bolder">Perangkat</th>
-                      <th class="text-center text-secondary text-xxs font-weight-bolder">Kolom7</th>
+                      <!-- <th class="text-center text-secondary text-xxs font-weight-bolder">Kolom7</th> -->
                       <th class="text-center text-secondary text-xxs font-weight-bolder">Link Bukti</th>
                       <th class="text-center text-secondary text-xxs font-weight-bolder">Aksi</th>
                     </tr>
@@ -70,9 +70,9 @@
                       <td class="text-center"><p class="mb-0 text-sm"><?= $p['status_kepemilikan'] ?></p></td>
                       <td class="text-center"><p class="mb-0 text-sm"><?= $p['status_lisensi'] ?></p></td>
                       <td class="text-center"><p class="mb-0 text-sm"><?= $p['perangkat'] ?></p></td>
-                      <td class="text-center">
+                      <!-- <td class="text-center">
                         <p class="mb-0 text-sm"><?= $p['kolom7'] ?? '-' ?></p>
-                      </td>
+                      </td> -->
                       <td class="text-center">
                         <a href="<?= $p['link_bukti'] ?>" target="_blank" class="text-primary text-sm">
                           Lihat
@@ -82,7 +82,7 @@
                       <td class="text-center">
                         <a href="<?= base_url('table/table5_2/'.$p['id'].'/edit') ?>" class="btn bg-gradient-info btn-sm">Edit</a> 
                         
-                        <a href="#" data-href="<?= base_url('table/table5_2/'.$p['id'].'/delete') ?>"
+                        <a href="javascript:;" data-href="<?= base_url('table/table5_2/'.$p['id'].'/delete') ?>"
                            onclick="confirmToDelete(this)"
                            class="btn btn-outline-danger btn-sm"
                            data-bs-toggle="modal"
@@ -97,112 +97,6 @@
 
                 <div id="resultMessage" class="text-center mt-2"></div>
 
-                <div class="modal fade" id="confirm-dialog" tabindex="-1">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title">Konfirmasi Hapus</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                      </div>
-                      <div class="modal-body">
-                        Apakah Anda yakin ingin menghapus data ini?
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                        <button type="button" class="btn btn-danger" onclick="deleteData()">Hapus</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <script>
-                  function confirmToDelete(element) {
-                    var deleteButton = document.querySelector('#confirm-dialog .btn-danger');
-                    deleteButton.setAttribute('data-href', element.getAttribute('data-href'));
-                  }
-
-                  function deleteData() {
-                    var deleteUrl = document.querySelector('#confirm-dialog .btn-danger').getAttribute('data-href');
-                    window.location.href = deleteUrl;
-                  }
-                </script>
-
-                <div class="modal fade" id="modalCreate" tabindex="-1">
-                  <div class="modal-dialog modal-dialog-centered modal-md">
-                    <div class="modal-content">
-                      <div class="modal-body p-0">
-                        <div class="card card-plain">
-                          <div class="card-header pb-0 text-left">
-                            <h3 class="font-weight-bolder text-primary text-gradient">Tambah Prasarana</h3>
-                            <p class="mb-0">Isi data prasarana</p>
-                          </div>
-
-                          <div class="card-body pb-3">
-                            <form action="<?= base_url('table/table5_2/new') ?>" method="post"> 
-
-                              <label>Nama Prasarana</label>
-                              <input type="text" class="form-control mb-3" name="nama_prasarana">
-
-                              <label>Daya Tampung</label>
-                              <input type="text" class="form-control mb-3" name="daya_tampung">
-
-                              <label>Luas Ruang</label>
-                              <input type="text" class="form-control mb-3" name="luas_ruang">
-
-                              <label>Status Kepemilikan</label>
-                              <input type="text" class="form-control mb-3" name="status_kepemilikan">
-
-                              <label>Status Lisensi</label>
-                              <input type="text" class="form-control mb-3" name="status_lisensi">
-
-                              <label>Perangkat</label>
-                              <input type="text" class="form-control mb-3" name="perangkat">
-
-                              <label>Kolom7</label>
-                              <input type="text" class="form-control mb-3" name="kolom7">
-
-                              <label>Link Bukti</label>
-                              <input type="text" class="form-control mb-3" name="link_bukti">
-
-                              <button type="submit" class="btn bg-gradient-primary w-100 mt-3">Tambah</button>
-                            </form>
-                          </div>
-
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <script>
-                  document.addEventListener("DOMContentLoaded", function() {
-                    const searchInput = document.getElementById("searchInput");
-                    const resultMessage = document.getElementById("resultMessage");
-                    const tableBody = document.querySelector("table tbody");
-
-                    function filterRows() {
-                      const searchText = searchInput.value.toLowerCase();
-                      let found = 0;
-
-                      tableBody.querySelectorAll("tr").forEach(row => {
-                        const nama = row.children[1].textContent.toLowerCase();
-
-                        if (nama.includes(searchText)) {
-                          row.style.display = "";
-                          found++;
-                        } else {
-                          row.style.display = "none";
-                        }
-                      });
-
-                      resultMessage.textContent = found === 0 ? "Data tidak ditemukan" : "";
-                    }
-
-                    searchInput.addEventListener("input", filterRows);
-                  });
-                </script>
-
-
               </div>
             </div>
 
@@ -211,5 +105,117 @@
       </div>
     </div>
 </main>
+
+<!-- Modal Delete -->
+<div class="modal fade" id="confirm-dialog" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Konfirmasi Hapus</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        Apakah Anda yakin ingin menghapus data ini?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+        <button type="button" class="btn btn-danger" onclick="deleteData()">Hapus</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Create -->
+<div class="modal fade" id="modalCreate" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-md">
+    <div class="modal-content">
+      <div class="modal-body p-0">
+        <div class="card card-plain">
+          <div class="card-header pb-0 text-left">
+            <h3 class="font-weight-bolder text-primary text-gradient">Tambah Prasarana</h3>
+            <p class="mb-0">Isi data prasarana</p>
+          </div>
+
+          <div class="card-body pb-3">
+            <form action="<?= base_url('table/table5_2/new') ?>" method="post"> 
+
+              <label>Nama Prasarana</label>
+              <input type="text" class="form-control mb-3" name="nama_prasarana">
+
+              <label>Daya Tampung</label>
+              <input type="text" class="form-control mb-3" name="daya_tampung">
+
+              <label>Luas Ruang</label>
+              <input type="text" class="form-control mb-3" name="luas_ruang">
+
+              <label>Status Kepemilikan</label>
+              <select class="form-control mb-3" name="status_kepemilikan">
+                  <option value="M">Milik Sendiri (M)</option>
+                  <option value="W">Sewa/Kontrak/Kerjasama (W)</option>
+              </select>
+
+              <label>Status Lisensi</label>
+              <select class="form-control mb-3" name="status_lisensi">
+                  <option value="L">Lisensi (L)</option>
+                  <option value="P">Paten (P)</option>
+                  <option value="T">Tidak Berlisensi (T)</option>
+              </select>
+
+              <label>Perangkat</label>
+              <input type="text" class="form-control mb-3" name="perangkat">
+
+              <label>Link Bukti</label>
+              <input type="text" class="form-control mb-3" name="link_bukti">
+
+              <button type="submit" class="btn bg-gradient-primary w-100 mt-3">Tambah</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function confirmToDelete(element) {
+    var deleteButton = document.querySelector('#confirm-dialog .btn-danger');
+    deleteButton.setAttribute('data-href', element.getAttribute('data-href'));
+  }
+
+  function deleteData() {
+    var deleteUrl = document.querySelector('#confirm-dialog .btn-danger').getAttribute('data-href');
+    window.location.href = deleteUrl;
+  }
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const searchInput = document.getElementById("searchInput");
+    const resultMessage = document.getElementById("resultMessage");
+    const tableBody = document.querySelector("table tbody");
+
+    function filterRows() {
+      const searchText = searchInput.value.toLowerCase();
+      let found = 0;
+
+      tableBody.querySelectorAll("tr").forEach(row => {
+        // Nama prasarana is in the 2nd column (index 1)
+        const nama = row.children[1].textContent.toLowerCase(); 
+
+        if (nama.includes(searchText)) {
+          row.style.display = "";
+          found++;
+        } else {
+          row.style.display = "none";
+        }
+      });
+
+      resultMessage.textContent = found === 0 ? "Data tidak ditemukan" : "";
+    }
+
+    if(searchInput) {
+        searchInput.addEventListener("input", filterRows);
+    }
+  });
+</script>
 
 <?= $this->endSection() ?>

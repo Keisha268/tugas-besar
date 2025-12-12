@@ -11,7 +11,7 @@
                     <h3 class="text-center text-primary mb-3">Edit Data Prasarana</h3>
                     <p class="text-center text-sm text-muted">Perbarui data prasarana di formulir berikut</p>
 
-                    <form action="<?= base_url('table/table5_2/'.$prasarana['id'].'/update') ?>" method="post">
+                    <form action="<?= base_url('table/table5_2/'.$prasarana['id'].'/edit') ?>" method="post">
                         <?= csrf_field() ?>
 
                         <div class="mb-3">
@@ -34,14 +34,19 @@
 
                         <div class="mb-3">
                             <label class="form-label">Status Kepemilikan</label>
-                            <input type="text" class="form-control" name="status_kepemilikan"
-                                value="<?= $prasarana['status_kepemilikan'] ?>">
+                            <select class="form-control" name="status_kepemilikan">
+                                <option value="M" <?= ($prasarana['status_kepemilikan'] == 'M') ? 'selected' : '' ?>>Milik Sendiri (M)</option>
+                                <option value="W" <?= ($prasarana['status_kepemilikan'] == 'W') ? 'selected' : '' ?>>Sewa/Kontrak/Kerjasama (W)</option>
+                            </select>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Status Lisensi</label>
-                            <input type="text" class="form-control" name="status_lisensi"
-                                value="<?= $prasarana['status_lisensi'] ?>">
+                            <select class="form-control" name="status_lisensi">
+                                <option value="L" <?= ($prasarana['status_lisensi'] == 'L') ? 'selected' : '' ?>>Lisensi (L)</option>
+                                <option value="P" <?= ($prasarana['status_lisensi'] == 'P') ? 'selected' : '' ?>>Paten (P)</option>
+                                <option value="T" <?= ($prasarana['status_lisensi'] == 'T') ? 'selected' : '' ?>>Tidak Berlisensi (T)</option>
+                            </select>
                         </div>
 
                         <div class="mb-3">
@@ -50,12 +55,13 @@
                                 value="<?= $prasarana['perangkat'] ?>">
                         </div>
 
+                        <!-- 
                         <div class="mb-3">
                             <label class="form-label">Kolom7</label>
                             <input type="text" class="form-control" name="kolom7"
                                 value="<?= $prasarana['kolom7'] ?? '' ?>">
-
-                        </div>
+                        </div> 
+                        -->
 
                         <div class="mb-3">
                             <label class="form-label">Link Bukti</label>

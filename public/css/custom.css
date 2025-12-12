@@ -1,0 +1,45 @@
+/* Custom Hover Effects for Buttons */
+
+/* Edit Button Hover (Info Gradient) */
+.btn.bg-gradient-info {
+  transition: all 0.3s ease;
+}
+
+.btn.bg-gradient-info:hover {
+  box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px) scale(1.02);
+  /* Make slightly brighter or just rely on shadow/transform */
+}
+
+/* Delete Button Hover (Outline Danger) */
+.btn.btn-outline-danger {
+  transition: all 0.3s ease;
+}
+
+.btn.btn-outline-danger:hover {
+  background-color: #f5365c !important; /* Argon red */
+  color: #fff !important;
+  border-color: #f5365c !important;
+  box-shadow: 0 7px 14px rgba(245, 54, 92, 0.4);
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* Delete Button Hover (Gradient Danger) */
+.btn.bg-gradient-danger {
+  transition: all 0.3s ease;
+}
+
+.btn.bg-gradient-danger:hover {
+  box-shadow: 0 7px 14px rgba(245, 54, 92, 0.4);
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* Create Button Hover (Success Gradient) */
+.btn.bg-gradient-success {
+  transition: all 0.3s ease;
+}
+
+.btn.bg-gradient-success:hover {
+  box-shadow: 0 7px 14px rgba(45, 206, 137, 0.4); /* Argon success color shadow */
+  transform: translateY(-2px) scale(1.02);
+}

@@ -32,7 +32,6 @@ class Table5_2 extends BaseController
                 'status_kepemilikan' => $this->request->getPost('status_kepemilikan'),
                 'status_lisensi' => $this->request->getPost('status_lisensi'),
                 'perangkat' => $this->request->getPost('perangkat'),
-                'kolom7' => $this->request->getPost('kolom7'),
                 'link_bukti' => $this->request->getPost('link_bukti'),
             ];
 
@@ -60,7 +59,6 @@ class Table5_2 extends BaseController
                 'status_kepemilikan' => $this->request->getPost('status_kepemilikan'),
                 'status_lisensi' => $this->request->getPost('status_lisensi'),
                 'perangkat' => $this->request->getPost('perangkat'),
-                'kolom7' => $this->request->getPost('kolom7'),
                 'link_bukti' => $this->request->getPost('link_bukti'),
             ];
 
@@ -73,7 +71,8 @@ class Table5_2 extends BaseController
         $data['prasarana'] = $model->find($id);
 
         if (empty($data['prasarana'])) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('Data Prasarana tidak ditemukan.');
+           // throw new \CodeIgniter\Exceptions\PageNotFoundException('Data Prasarana tidak ditemukan.');
+           return redirect()->to(base_url('table/table5_2'))->with('error', 'Data tidak ditemukan.');
         }
 
         return view('edittable5_2', $data);
@@ -93,7 +92,6 @@ class Table5_2 extends BaseController
             'status_kepemilikan' => $this->request->getPost('status_kepemilikan'),
             'status_lisensi' => $this->request->getPost('status_lisensi'),
             'perangkat' => $this->request->getPost('perangkat'),
-            'kolom7' => $this->request->getPost('kolom7'),
             'link_bukti' => $this->request->getPost('link_bukti'),
         ];
 

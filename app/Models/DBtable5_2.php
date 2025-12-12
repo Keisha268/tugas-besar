@@ -8,7 +8,7 @@ class DBtable5_2 extends Model
 {
     protected $table            = 'tubes';
     protected $primaryKey       = 'id';
-
+    protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useTimestamps    = true;
 
@@ -19,7 +19,6 @@ class DBtable5_2 extends Model
         'status_kepemilikan',
         'status_lisensi',
         'perangkat',
-        //'kolom7', //hapus ini
         'link_bukti'
     ];
 }
