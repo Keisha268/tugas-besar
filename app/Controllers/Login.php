@@ -41,6 +41,7 @@ class Login extends BaseController
     function logout()
     {
         session()->destroy();
-        return redirect()->to('/login/index');
+        // PASTIKAN PERUBAHAN INI SUDAH TERSIMPAN!
+        return redirect()->to(base_url('login'));
     }
 }

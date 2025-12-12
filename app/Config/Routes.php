@@ -26,10 +26,11 @@ $routes->get('/dashboard', 'Dashboard::index');
 $routes->get('/register', 'Register::index');
 $routes->post('/register/process', 'Register::process');
 
-$routes->get('/login', 'Login::index');
-$routes->post('/login/process', 'Login::process');
+$routes->get('login', 'Login::index');
+$routes->get('login/index', 'Login::index');
+$routes->post('login/process', 'Login::process');
+$routes->get('logout', 'Login::logout');
 
-$routes->get('/logout', 'Login::logout');
 
 
 // ================================
