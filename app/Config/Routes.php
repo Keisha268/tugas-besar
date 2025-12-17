@@ -19,6 +19,18 @@ $routes->set404Override();
 $routes->get('/', 'Dashboard::index');          
 $routes->get('/dashboard', 'Dashboard::index'); 
 
+// ================================
+// USERS MANAGEMENT
+// ================================
+$routes->group('users', function($routes){
+    $routes->get('/', 'Users::index');
+    $routes->get('create', 'Users::create');
+    $routes->post('store', 'Users::store');
+    $routes->get('(:any)/edit', 'Users::edit/$1');
+    $routes->post('(:any)/update', 'Users::update/$1');
+    $routes->get('(:any)/delete', 'Users::delete/$1');
+}); 
+
 
 // ================================
 // AUTH (LOGIN / REGISTER / LOGOUT)
@@ -40,6 +52,7 @@ $routes->group('table', function($routes){
 
     // ========== TABLE 5.2 (PRASARANA) ==========
     $routes->get('table5_2', 'Table5_2::index');
+    $routes->get('table5_2/export', 'Table5_2::export');
     $routes->post('table5_2/new', 'Table5_2::create');
     $routes->get('table5_2/(:num)/edit', 'Table5_2::edit/$1');
     $routes->post('table5_2/(:num)/edit', 'Table5_2::edit/$1');
@@ -48,6 +61,7 @@ $routes->group('table', function($routes){
 
     // ========== TABLE 3B71 ==========
     $routes->get('table3b71', 'Table3b71::index');
+    $routes->get('table3b71/export', 'Table3b71::export');
     $routes->get('table3b71/(:segment)/preview', 'Table3b71::preview/$1');
     $routes->add('table3b71/new', 'Table3b71::create');
     $routes->add('table3b71/(:segment)/edit', 'Table3b71::edit/$1');

@@ -12,6 +12,30 @@ class Table3b71 extends BaseController
 		echo view('table3b71', $data);
 	}
 
+    public function export()
+    {
+        $table3b71 = new DBtable3b71();
+        $data = $table3b71->findAll();
+        
+        header("Content-Type: application/vnd.ms-excel");
+        header("Content-Disposition: attachment; filename=Table3b71.xls");
+        
+        echo '<table border="1">';
+        echo '<thead><tr><th>No</th><th>Luaran Penelitian</th><th>Tahun</th><th>Keterangan</th></tr></thead>';
+        echo '<tbody>';
+        $no = 1;
+        foreach ($data as $row) {
+            echo '<tr>';
+            echo '<td>' . $no++ . '</td>';
+            echo '<td>' . $row['luaran_penelitian'] . '</td>';
+            echo '<td>' . $row['tahun'] . '</td>';
+            echo '<td>' . $row['keterangan'] . '</td>';
+            echo '</tr>';
+        }
+        echo '</tbody></table>';
+        exit;
+    }
+
 	public function create()
     {
         // lakukan validasi

@@ -18,6 +18,49 @@ class Table5_2 extends BaseController
     }
 
     // ============================================
+    // EXPORT EXCEL
+    // ============================================
+    public function export()
+    {
+        $model = new DBtable5_2();
+        $prasarana = $model->findAll();
+        
+        header("Content-Type: application/vnd.ms-excel");
+        header("Content-Disposition: attachment; filename=Data_Prasarana.xls");
+        
+        echo '<table border="1">';
+        echo '<thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Prasarana</th>
+                    <th>Daya Tampung</th>
+                    <th>Luas Ruang</th>
+                    <th>Status Kepemilikan</th>
+                    <th>Status Lisensi</th>
+                    <th>Perangkat</th>
+                    <th>Link Bukti</th>
+                </tr>
+              </thead>';
+        echo '<tbody>';
+        $no = 1;
+        foreach ($prasarana as $p) {
+            echo '<tr>';
+            echo '<td>' . $no++ . '</td>';
+            echo '<td>' . $p['nama_prasarana'] . '</td>';
+            echo '<td>' . $p['daya_tampung'] . '</td>';
+            echo '<td>' . $p['luas_ruang'] . '</td>';
+            echo '<td>' . $p['status_kepemilikan'] . '</td>';
+            echo '<td>' . $p['status_lisensi'] . '</td>';
+            echo '<td>' . $p['perangkat'] . '</td>';
+            echo '<td>' . $p['link_bukti'] . '</td>';
+            echo '</tr>';
+        }
+        echo '</tbody>';
+        echo '</table>';
+        exit;
+    }
+
+    // ============================================
     // CREATE
     // ============================================
     public function create()

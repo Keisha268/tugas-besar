@@ -33,9 +33,17 @@
               <h5>Tabel 3.b.7 PKM oleh DTPS</h5>
               <h6>Bagian-1 HKI (Paten, Paten Sederhana)</h6>
               <!-- button tambah -->
+              <?php $role = session()->get('role'); ?>
+              
+              <?php if ($role != 'staff') : ?>
               <button type="button"  class="btn bg-gradient-success btn-block mb-3" data-bs-toggle="modal" data-bs-target="#modalCreate">
                 Tambah Data
               </button>
+              <?php endif; ?>
+
+              <a href="<?= base_url('table/table3b71/export') ?>" class="btn bg-gradient-success btn-block mb-3">
+                Export Excel
+              </a>
               <br>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
@@ -47,7 +55,9 @@
                       <th class="text-center text-uppercase text-xxs font-weight-bolder ">Luaran Penelitian</th>
                       <th class="text-center text-uppercase text-xxs font-weight-bolder">Tahun</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder ">Keterangan</th>
+                      <?php if ($role != 'staff') : ?>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder ">Aksi</th>
+                      <?php endif; ?>
                     </tr>
                   </thead>
                   <tbody>
@@ -67,6 +77,7 @@
                         <p class="mb-0 text-sm"><?= $table3b71['keterangan'] ?></p>
                       </td>
                       
+                      <?php if ($role != 'staff') : ?>
                       <td class="text-center">
                       <!-- aksi -->
                       <a href="<?= base_url('table/table3b71/'.$table3b71['no'].'/edit') ?>" class="btn bg-gradient-info btn-block">
@@ -74,6 +85,7 @@
                       </a>
                       <a href="#" data-href="<?= base_url('table/table3b71/' . $table3b71['no'] . '/delete') ?>" onclick="confirmToDelete(this)" class="btn bg-gradient-danger btn-block" data-bs-toggle="modal" data-bs-target="#confirm-dialog">Hapus</a>
                       </td>
+                      <?php endif; ?>
                       <!-- ------------------------------------ -->
                     </tr>
                     <?php $no++; endforeach ?>

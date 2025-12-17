@@ -16,10 +16,10 @@
 
     <?= $this->renderSection('contentlogin') ?>
 
-    <script src="<?= base_url('js/core/popper.min.js') ?>"></script>
-    <script src="<?= base_url('js/core/bootstrap.min.js') ?>"></script>
-    <script src="<?= base_url('js/plugins/perfect-scrollbar.min.js') ?>"></script>
-    <script src="<?= base_url('js/plugins/smooth-scrollbar.min.js') ?>"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.5.5/dist/perfect-scrollbar.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/smooth-scrollbar@8.7.4/dist/smooth-scrollbar.js"></script>
     <script src="<?= base_url('js/argon-dashboard.min.js?v=2.0.4') ?>"></script>
 
 </body>

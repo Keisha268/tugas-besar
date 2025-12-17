@@ -25,6 +25,7 @@ class Login extends BaseController
                 session()->set([
                     'username' => $dataUser->username,
                     'name' => $dataUser->name,
+                    'role' => $dataUser->role,
                     'logged_in' => TRUE
                 ]);
                 return redirect()->to(base_url('dashboard'));

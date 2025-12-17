@@ -37,9 +37,17 @@
             <div class="card-header pb-0">
               <h5>Data Prasarana</h5>
 
+              <?php $role = session()->get('role'); ?>
+              
+              <?php if ($role != 'staff') : ?>
               <button type="button" class="btn bg-gradient-success mb-3" data-bs-toggle="modal" data-bs-target="#modalCreate">
                 <i class="fas fa-plus"></i> Tambah Data
               </button>
+              <?php endif; ?>
+              
+              <a href="<?= base_url('table/table5_2/export') ?>" class="btn bg-gradient-success mb-3">
+                <i class="fas fa-file-excel"></i> Export Excel
+              </a>
             </div>
 
             <div class="card-body px-0 pt-0 pb-2">
@@ -56,7 +64,9 @@
                       <th class="text-center text-secondary text-xxs font-weight-bolder">Perangkat</th>
                       <!-- <th class="text-center text-secondary text-xxs font-weight-bolder">Kolom7</th> -->
                       <th class="text-center text-secondary text-xxs font-weight-bolder">Link Bukti</th>
+                      <?php if ($role != 'staff') : ?>
                       <th class="text-center text-secondary text-xxs font-weight-bolder">Aksi</th>
+                      <?php endif; ?>
                     </tr>
                   </thead>
 
@@ -79,6 +89,7 @@
                         </a>
                       </td>
 
+                      <?php if ($role != 'staff') : ?>
                       <td class="text-center">
                         <a href="<?= base_url('table/table5_2/'.$p['id'].'/edit') ?>" class="btn bg-gradient-info btn-sm">Edit</a> 
                         
@@ -90,6 +101,7 @@
                           Hapus
                         </a>
                       </td>
+                      <?php endif; ?>
                     </tr>
                     <?php $no++; endforeach ?>
                   </tbody>
